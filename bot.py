@@ -93,7 +93,6 @@ async def exec(ctx, *, command):
 async def whitelist(ctx, *args):
     if not discord.utils.get(ctx.guild.roles, id = MANAGER_ROLE) in ctx.author.roles:
         return await ctx.send(":x: You do not have permission to execute this command.")
-    
     if not args:
         return await ctx.send(run_rcon("whitelist list"))
     else:
@@ -104,7 +103,7 @@ async def whitelist(ctx, *args):
             if not args[1]:
                 return await ctx.send(f"Usage: {prefix}whitelist {args0} [player]")
             else:
-                return await ctx.send( str(run_rcon(f"whitelist {args0} {args[1]}")).replace("Added ", ":white_check_mark: Added ").replace("Removed ", ":white_check_mark: Removed ") )
+                return await ctx.send(str(run_rcon(f"whitelist {args0} {args[1]}")).replace("Added ", ":white_check_mark: Added ").replace("Removed ", ":white_check_mark: Removed "))
         else:
             return await ctx.send(":x: Invalid command.")
 
